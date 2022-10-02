@@ -1,0 +1,41 @@
+﻿@using WebApplication1.ViewModel
+@model List<StaffModel>
+<body>
+<div><p align="right">
+        <input class="btn btn-success" value="Add" onclick="location.href='@Url.Action("Add", "Staff")'" />
+    </p></div>
+</body>
+<table class="center table table-hover table-dark">
+    <tr class="table-info">
+        <th>Staff Id </th>
+        <th>First Name </th>
+        @*<th>Last Name</th>*@
+        <th>Email </th>
+        <th>Phone</th>
+        <th>Active</th>
+        <th>Store ID</th>
+        <th>Manager Id</th>
+    </tr>
+    @foreach (var d in Model)
+    {
+<tr class="table-secondary">
+    <td>@d.staff_id</td>
+    <td>@d.first_name  @d.last_name</td>
+    @*<td>@d.last_name</td>*@
+    <td>@d.email</td>
+    <td>@d.phone</td>
+    <td>@d.active</td>
+    <td>@d.store_id</td>
+    <td>@d.manager_id</td>
+
+
+</tr>
+    }
+</table>
+    <style>
+        table.center {
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    </style>

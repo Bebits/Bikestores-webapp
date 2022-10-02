@@ -1,0 +1,80 @@
+﻿@using WebApplication1.ViewModel
+@{
+    ViewBag.Title = "Add";
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#btnPost").click(function () {
+            var staff = new Object();
+            staff.first_name = $('#txtFName').val();
+            staff.last_name = $('#txtLName').val();
+            staff.email = $('#txtemail').val();
+            staff.phone = $('#txtphone').val();
+            /*staff.active = $('#txtactive').val();*/
+            staff.active = $(".message_pri:checked").val();
+            if (staff != null) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Staff/Add",
+                    data: JSON.stringify(staff),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        if (response != null) {
+                            alert("FirstName : " + response.first_name + ",LastName : " + response.last_name +
+                                ", Email :" + response.email + ", Phone :" + response.phone + ", Active :" + response.active);
+                        } else {
+                            alert("Something went wrong");
+                        }
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            }
+        });
+    });
+</script>
+<body>
+   
+    <div title="ADD STAFF">
+        
+        <!--<input type="text" id="txtFName" placeholder="Enter first name" />
+        <input type="text" id="txtLName" placeholder="Enter last name" />
+        <input type="email" id="txtemail" placeholder="email" />
+        <input type="number" id="txtphone" placeholder="phone" />-->
+        @*<input type="radio" id="txtactive" placeholder="active" />*@
+        <!--<input type="radio" class="message_pri" name="message_pri" value="1" /> Active
+        <input type="radio" class="message_pri" name="message_pri" value="0" /> Inactive-->
+        <div>
+                <label for="FirstName">First Name:</label>
+                <input id="txtFName"type="text" name="FirstName" value="" />
+        </div>
+         <div>
+                <label for="LastName">Last Name:</label>
+                <input id="txtLName"type="text" name="LastName" value="" />
+          </div>
+         <div>
+                <label for="email">Email:</label>
+                <input id="email"type="email" name="email" value="" />
+          </div>
+         <div>
+                <label for="phone">Phone:</label>
+                <input id="txtphone"type="number" name="Phone" value="" />
+         </div>
+         <div><input type="radio" class="message_pri" name="message_pri" value="1" /> Active</div>
+         <div><input type="radio" class="message_pri" name="message_pri" value="0" /> Inactive</div>
+        <div>
+
+        <input type="button" id="btnPost" value="Post Data" />
+          
+    </div>
+        </div>
+</body>
+
+
+

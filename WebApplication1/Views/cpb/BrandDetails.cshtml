@@ -1,0 +1,37 @@
+﻿
+@using WebApplication1.ViewModel
+@model List<BrandsModel>
+
+@*<div class="col-md-12 bg-light text-right">
+    <input class="btn btn-primary" value="Add " onclick="location.href='@Url.Action("Add", "cpb")'" />
+</div>*@
+<table class="center table table-hover table-dark">
+    <tr>
+    <tr class="table-info">
+        <th>Brand Id </th>
+        <th>Brand Name </th>
+        <th>Action</th>
+
+    </tr>
+    @foreach (var d in Model)
+    {
+        
+        <tr class="table-secondary">
+            <td>@d.brand_id</td>
+            <td>@d.brand_name</td>
+            <td><button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "Deletecpb", new { BrandId = d.brand_id })'" />Delete</td>
+            @*<td>@Html.ActionLink("Delete", "Deletecpb", new { BrandId = d.brand_id })</td>*@
+        </tr>
+
+        }
+    </table>
+<style>
+    table.center {
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+</style>
+
+
+

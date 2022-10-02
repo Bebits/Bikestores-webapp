@@ -1,0 +1,77 @@
+﻿@using WebApplication1.ViewModel
+@model StoreModel
+@{
+    ViewBag.Title = "CreateDetails";
+}
+
+
+<h2>CreateDetails</h2>
+<div>
+    <button class="btn btn-danger" onclick="location.href = '@Url.Action("Index", "Store")'" />Back
+</div>
+@using (Html.BeginForm("Add", "Store", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+
+<table class="center">
+    <tr>
+        <td>Store Name: </td>
+        <td>@Html.TextBoxFor(m => m.StoreName)</td>
+        <td>@Html.ValidationMessageFor(m => m.StoreName)</td>
+    </tr>
+    <tr>
+        <td>Phone: </td>
+        <td>@Html.TextBoxFor(m => m.Phone)</td>
+        <td> @Html.ValidationMessageFor(m => m.Phone)</td>
+    </tr>
+    <tr>
+        <td>Email: </td>
+        <td>@Html.TextBoxFor(m => m.Email)</td>
+        <td> @Html.ValidationMessageFor(m => m.Email)</td>
+    </tr>
+    <tr>
+        <td>Street: </td>
+        <td>@Html.TextBoxFor(m => m.Street)</td>
+    </tr>
+    <tr>
+        <td>City: </td>
+        <td>@Html.TextBoxFor(m => m.City)</td>
+    </tr>
+    <tr>
+        <td>State: </td>
+        <td>@Html.TextBoxFor(m => m.State)</td>
+    </tr>
+    <tr>
+        <td>Zip Code: </td>
+        <td>@Html.TextBoxFor(m => m.ZipCode)</td>
+    </tr>
+    @*<tr>
+        <td>Created Date: </td>
+        <td>@Html.TextBoxFor(m => m.ZipCode)</td>
+    </tr>*@
+
+    @*<tr>
+            <td colspan="2"><input id="btnsubmit" type="submit" value="Add" /></td>
+        </tr>*@
+</table>
+     <div>
+        <p align="center">
+    <button id="btnsubmit" type="submit" class="btn btn-success" value="Add">SUBMIT</button>
+            </p></div>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+}
+
+<script type="text/javascript">
+    $('#btnsubmit').click(function () {
+        alert('Successfully Submitted');
+    });
+</script>
+<style>
+    table.center {
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+</style>
+
+

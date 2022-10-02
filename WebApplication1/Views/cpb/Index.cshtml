@@ -1,0 +1,113 @@
+﻿
+@using WebApplication1.ViewModel
+@model List<cpbModel>
+<head>
+    <link rel=”stylesheet” href=”https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css” />
+    <script type=”text/javascript” src=”https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js”></script>
+</head>
+<div class="col-md-12 bg-light text-right">
+    <div>
+        <p align="right">
+            <input class="btn btn-success" value="Add " onclick="location.href='@Url.Action("Add", "cpb")'" />
+        </p>
+    </div>
+</div>
+@*<div class="dropdown">
+        <button class="dropbtn">Dropdown</button>
+        <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>*@
+<table id="producttable" class="center table table-hover table-dark">
+    <thead>
+        <tr class="table-info">
+            <th>Product Id </th>
+            <th>Product Name </th>
+            <th>Category Name</th>
+            <th>Brand Name</th>
+            <th>List Price</th>
+            <th>Model Year</th>
+            <th>Brand Id</th>
+            <th>Category Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model)
+        {
+
+            <tr class="table-secondary">
+                <td>@d.ProductId</td>
+                <td>@d.ProductName</td>
+                <td>@d.CategoryName</td>
+                <td>@d.BrandName</td>
+                <td>@d.ListPrice</td>
+                <td>@d.ModelYear</td>
+                <td>@d.BrandId</td>
+                <td>@d.CategoryId</td>
+                @*<td>@Html.ActionLink("Delete", "Delete", new { bId =d.BrandId, pId =d.ProductId,cId =d.CategoryId})</td>*@
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+<script>
+
+    /* Initialization of datatable */
+    $(document).ready(function () {
+        $('#producttable').DataTable({});
+    });
+</script>
+<style>
+    table.center {
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+</style>
+@*<style>
+        .dropbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>*@
+
+

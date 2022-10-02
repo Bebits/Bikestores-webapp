@@ -1,0 +1,45 @@
+﻿@using WebApplication1.ViewModel
+@model List<StoreStocksModel>
+
+<div >
+    <h1>Stocks</h1>
+</div>
+<div>
+    <button class="btn btn-danger" onclick="location.href = '@Url.Action("Index", "Store")'" />Back
+</div>
+<table class="center table table-bordered table-responsive table-hover">
+    <tr class="table-info">
+        <th>Product Id </th>
+        <th>Product Name</th>
+        <th>Quantity </th>
+        <th>
+            <input class="btn btn-primary" value="Add Stock" onclick="location.href = '@Url.Action("Create", "StoreStock", new { @Model.FirstOrDefault().StoreId })'" />
+        </th>
+    </tr>
+    @foreach (var d in Model)
+    {
+        <tr>
+            <td>@d.ProductId</td>
+            <td>@d.ProductName</td>
+            <td>@d.quantity</td>
+            @*<td>@Html.ActionLink("Delete", "Delete", new { Id = d.StoreId, pId = d.ProductId })</td>*@
+            <td>
+
+                <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "Delete", new { Id = d.StoreId, pId = d.ProductId })'" />Delete
+                @*<td>@Html.ActionLink("Edit", "EditStock", new { d.StoreId, d.ProductId, d.quantity })</td>*@
+
+                <button class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "EditStock", new { d.StoreId, d.ProductId, d.quantity })'" />Edit
+            </td>
+
+        </tr>
+
+    }
+
+</table>
+<style>
+    table.center {
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+</style>

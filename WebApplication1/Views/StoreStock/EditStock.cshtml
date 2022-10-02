@@ -1,0 +1,25 @@
+﻿@using WebApplication1.ViewModel
+@model StoreStocksModel
+@{
+    ViewBag.Title = "EditStock";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm("Edits", "StoreStock", FormMethod.Post))
+{
+<table>
+    <tr>
+        <td> @Html.HiddenFor(x => x.StoreId)</td>
+    </tr>
+    <tr>
+        <td> @Html.HiddenFor(x => x.ProductId)</td>
+    </tr>
+    <tr>
+        <td>Quantity: </td>
+        <td>@Html.TextBoxFor(m => m.quantity)</td>
+    </tr>
+    <tr>
+        <td colspan="2"><input type="submit" value="Submit Form" /></td>
+    </tr>
+</table>
+}

@@ -1,0 +1,107 @@
+﻿@using WebApplication1.ViewModel
+@model List<StoreModel>
+@*<div class="col-md-12 bg-light text-right">*@
+@*</div>*@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+
+    <!-- jQuery library file -->
+    <script type="text/javascript"
+            src="https://code.jquery.com/jquery-3.5.1.js">
+    </script>
+
+    <!-- Datatable plugin JS library file -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+    </script>
+</head>
+<div>
+    <center> <h1>STORES</h1></center>
+</div>
+<table id="storedetails" class=" table table-hover table-dark table-bordered">
+    <thead>
+        <tr class="table-info">
+            <th>Store Id </th>
+            <th>Store Name </th>
+            <th>Phone</th>
+            <th>Email </th>
+            <th>Street</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th>Created By</th>
+            <th>Created Date</th>
+            <th>Modified By</th>
+            <th>Modified Date</th>
+
+
+            <th>
+                <input class="btn btn-success" value="Add" onclick="location.href='@Url.Action("CreateDetails", "Store")'" />
+
+            </th>
+    </thead>
+
+    @foreach (var d in Model)
+    {
+        <tbody>
+            <tr class="table-secondary">
+                <td>@d.StoreId</td>
+                <td>@d.StoreName</td>
+                <td>@d.Phone</td>
+                <td>@d.Email</td>
+                <td>@d.Street</td>
+                <td>@d.City</td>
+                <td>@d.State</td>
+                <td>@d.ZipCode</td>
+                <td>@d.CreatedBy</td>
+                <th>@d.Created_Date</th>
+                <td>@d.ModifiedBy</td>
+                <td>@d.ModifiedDate</td>
+                @*<td><a href='@Url.Action("StoreStock", "StoreStock", new { d.StoreId, d.ProductId })'>Details </a></td>*@
+                <td style="width:500px">
+                    <button style="margin:5px;" value="Details" class="btn btn-info" onclick="location.href='@Url.Action("StoreStock", "StoreStock", new {d.StoreId ,d.ProductId})'" />Details
+                    @*<td>@Html.ActionLink("Edit", "Edit", new { d.StoreId, d.StoreName, d.Email, d.Phone, d.Street, d.City, d.State, d.ZipCode })</td>*@
+                    <button style="margin:5px;" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Store", new { d.StoreId, d.StoreName, d.Email, d.Phone, d.Street, d.City, d.State, d.ZipCode })'" />Edit
+                    @*<td>@Html.ActionLink("Delete", "Delete", new { Id = d.StoreId })</td>*@
+                    <button style="margin:5px;" id="btndelete" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "Store", new { Id = d.StoreId })'" /><i class="fa-solid fa-trash-can"></i>Delete
+                </td>
+
+            </tr>
+        </tbody>
+
+    }
+</table>
+<script>
+    $(document).ready(function () {
+        $('#storedetails').DataTable();
+    });
+</script>
+<div>
+    <i class="fa-solid fa-trash-can"></i>
+    </div>
+
+
+    @*<style>
+            table.center {
+                width: 70%;
+                margin-left: 2%;
+                margin-right: 2%;
+                background-color: floralwhite;
+            }
+        </style>*@
+
+
+
+
+
