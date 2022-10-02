@@ -4,9 +4,10 @@ Project with ASP.NET MVC
 ## Language and Technology Used
 HTML5
 CSS3
+JavaScript
 JQuery
 Bootstrap
-PHP7
+C#
 MVC Design Pattern
 
 ## Project Description
